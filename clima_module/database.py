@@ -23,13 +23,14 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 def init_db():
     Base.metadata.create_all(bind=engine)
 
-def upsert_or_update_clima(municipio, temperatura, weather_code, latitud=None, longitud=None, fecha=None):
+def upsert_or_update_clima(municipio, temperatura, weather_code, weather_description, latitud=None, longitud=None, fecha=None):
     session = SessionLocal()
     clima = session.query(Clima).filter(Clima.municipio == municipio).first()
 
     if clima:
         clima.temperatura = temperatura
         clima.weather_code = weather_code
+        clima.weather_description = weather_description
         clima.latitud = latitud
         clima.longitud = longitud
         clima.fecha = fecha
@@ -38,6 +39,7 @@ def upsert_or_update_clima(municipio, temperatura, weather_code, latitud=None, l
             municipio=municipio,
             temperatura=temperatura,
             weather_code=weather_code,
+            weather_description=weather_description,
             latitud=latitud,
             longitud=longitud,
             fecha=fecha
