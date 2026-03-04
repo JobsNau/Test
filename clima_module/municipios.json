@@ -1,0 +1,19 @@
+{
+    "municipios": [
+        {"nombre": "Medellín", "lat": 6.2442, "lon": -75.5812},
+        {"nombre": "Envigado", "lat": 6.1700, "lon": -75.5870},
+        {"nombre": "Itagüí", "lat": 6.1850, "lon": -75.5970},
+        {"nombre": "La Estrella", "lat": 6.1570, "lon": -75.6430},
+        {"nombre": "Bello", "lat": 6.3370, "lon": -75.5570},
+        {"nombre": "Copacabana", "lat": 6.3460, "lon": -75.5080},
+        {"nombre": "Sabaneta", "lat": 6.1500, "lon": -75.6150},
+        {"nombre": "Caldas", "lat": 6.0900, "lon": -75.6350},
+        {"nombre": "Girardota", "lat": 6.3770, "lon": -75.4470},
+        {"nombre": "Barbosa", "lat": 6.4380, "lon": -75.3310},
+        {"nombre": "Copacabana", "lat": 6.3460, "lon": -75.5080},
+        {"nombre": "Sabaneta", "lat": 6.1500, "lon": -75.6150},
+        {"nombre": "Caldas", "lat": 6.0900, "lon": -75.6350},
+        {"nombre": "Girardota", "lat": 6.3770, "lon": -75.4470},
+        {"nombre": "Barbosa", "lat": 6.4380, "lon": -75.3310}
+        ]
+}
