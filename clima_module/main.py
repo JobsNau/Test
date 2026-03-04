@@ -22,6 +22,7 @@ def main():
             municipio["nombre"],
             clima["temperatura"],
             clima["weather_code"],
+            clima["weather_description"],
             latitud=clima["latitud"],
             longitud=clima["longitud"],
             fecha=clima["time"]

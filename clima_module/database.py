@@ -11,6 +11,7 @@ class Clima(Base):
     municipio = Column(String, index=True)
     temperatura = Column(Float)
     weather_code = Column(Integer)
+    weather_description = Column(String)
     latitud = Column(Float)
     longitud = Column(Float)
     fecha = Column(DateTime(timezone=True))

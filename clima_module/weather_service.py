@@ -5,6 +5,35 @@ from urllib3.util.retry import Retry
 
 BASE_URL = "https://api.open-meteo.com/v1/forecast"
 
+WEATHER_CODE_MAP = {
+    0: "Cielo despejado",
+    1: "Principalmente despejado",
+    2: "Parcialmente nublado",
+    3: "Nublado",
+    45: "Niebla",
+    48: "Niebla con escarcha",
+    51: "Llovizna ligera",
+    53: "Llovizna moderada",
+    55: "Llovizna intensa",
+    61: "Lluvia ligera",
+    63: "Lluvia moderada",
+    65: "Lluvia fuerte",
+    66: "Lluvia helada ligera",
+    67: "Lluvia helada intensa",
+    71: "Nieve ligera",
+    73: "Nieve moderada",
+    75: "Nieve fuerte",
+    77: "Granizo",
+    80: "Chubascos ligeros",
+    81: "Chubascos moderados",
+    82: "Chubascos violentos",
+    85: "Nevadas ligeras",
+    86: "Nevadas intensas",
+    95: "Tormenta",
+    96: "Tormenta con granizo leve",
+    99: "Tormenta con granizo fuerte"
+}
+
 
 def create_session():
     retry_strategy = Retry(
@@ -26,6 +55,12 @@ def create_session():
     })
 
     return session
+
+def get_weather_description(weather_code: int) -> str:
+    """
+    Retorna la descripción en texto del weather_code WMO.
+    """
+    return WEATHER_CODE_MAP.get(weather_code, "Estado del clima desconocido")
 
 
 def get_weather(lat, lon):
@@ -51,6 +86,7 @@ def get_weather(lat, lon):
         return {
             "temperatura": data["current_weather"]["temperature"],
             "weather_code": data["current_weather"]["weathercode"],
+            "weather_description": get_weather_description(data["current_weather"]["weathercode"]),
             "wind_speed": data["current_weather"]["windspeed"],
             "wind_direction": data["current_weather"]["winddirection"],
             "latitud": data["latitude"],
