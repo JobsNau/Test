@@ -387,3 +387,15 @@ df.drop_duplicates(subset=["id_propiedad"], keep='first')
 - ❌ Sin fecha válida
 
 ---
+
+## ¿Cómo manejarías si el archivo CSV mañana pesa 10GB?
+
+* Lo manejaría cambiando de un ETL en memoria a un ETL por streaming/lotes.
+
+* Lectura por chunks: leer el CSV en bloques (por ejemplo 100k–500k filas) en vez de cargar todo completo.
+
+* Transformación incremental: aplicar limpieza y normalización a cada bloque, no al DataFrame global.
+* Carga batch a BD: insertar por lotes con transacciones pequeñas y upsert para evitar duplicados.
+* Dimensiones cacheadas: mantener en memoria los mapas de ubicación/tipo para no consultar la BD por cada fila.
+* Tipado y columnas mínimas: cargar solo columnas necesarias y tipos explícitos para reducir RAM.
+* Observabilidad: métricas por lote (tiempo, filas, errores), checkpoint y reintento para poder reanudar si falla.
